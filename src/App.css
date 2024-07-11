@@ -7,6 +7,36 @@
   pointer-events: none;
 }
 
+html {
+  background: antiquewhite;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-item {
+  margin: 10px;
+}
+
+.todo-item > input {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.todo-item > p {
+  display: inline-block;
+}
+
+.checked {
+  text-decoration-line: line-through;
+}
+
+.unchecked {
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
