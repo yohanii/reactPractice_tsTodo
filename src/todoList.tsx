@@ -31,12 +31,12 @@ const TodoList = (): React.ReactElement => {
             </header>
 
             <article>
-                <input id="todo-input" type="text" placeholder="추가할 할 일을 입력하세요!" onChange={(e) => setInput(e.target.value)}/>
+                <input id="todo-input" type="text" placeholder="추가할 할 일을 입력하세요!" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}/>
                 <button id="addBtn" onClick={ addTodo }>추가</button>
             </article>
 
             <section id="todo-list">
-                {todos.map((todo) => (
+                {todos.map((todo:Todo) => (
                     <TodoListItem todo={ todo } onToggle={ onToggle }/>
                 ))}
             </section>
