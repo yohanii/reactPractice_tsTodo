@@ -1,6 +1,6 @@
 import {useCallback, useRef, useState} from "react";
-import TodoListItem from "./todoListItem";
 import Todo from "./todoInterface";
+import MemoizedTodoListItem from "./todoListItem";
 
 const TodoList = (): React.ReactElement => {
 
@@ -40,7 +40,7 @@ const TodoList = (): React.ReactElement => {
 
             <section id="todo-list">
                 {todos.map((todo:Todo) => (
-                    <TodoListItem todo={ todo } onToggle={ onToggle }/>
+                    <MemoizedTodoListItem todo={ todo } onToggle={ onToggle }/>
                 ))}
             </section>
         </div>

@@ -1,4 +1,5 @@
 import Todo from "./todoInterface";
+import React from "react";
 
 type TodoProps = {
     todo: Todo,
@@ -6,6 +7,8 @@ type TodoProps = {
 }
 
 const TodoListItem = ({ todo, onToggle }: TodoProps): React.ReactElement => {
+
+    console.log("render");
 
     const { id, content, checked } = todo;
 
@@ -17,4 +20,12 @@ const TodoListItem = ({ todo, onToggle }: TodoProps): React.ReactElement => {
     );
 };
 
-export default TodoListItem;
+const areEqual = (prevProps: TodoProps, nextProps: TodoProps):boolean => {
+    return (
+        prevProps.todo === nextProps.todo
+    );
+};
+
+const MemoizedTodoListItem = React.memo(TodoListItem, areEqual);
+
+export default MemoizedTodoListItem;
