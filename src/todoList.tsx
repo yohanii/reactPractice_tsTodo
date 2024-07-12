@@ -5,13 +5,16 @@ import Todo from "./todoInterface";
 const TodoList = (): React.ReactElement => {
 
     const [todos, setTodos] = useState<Array<Todo>>([]);
-    const [input, setInput] = useState<string>("");
+    const input = useRef<HTMLInputElement | null>(null);
 
     const nextId = useRef<number>(1);
     const addTodo = ():void => {
+
+        if (!input.current) return;
+
         setTodos([...todos, {
             id: nextId.current,
-            content: input,
+            content: input.current.value,
             checked: false
         }]);
         nextId.current++;
@@ -31,7 +34,7 @@ const TodoList = (): React.ReactElement => {
             </header>
 
             <article>
-                <input id="todo-input" type="text" placeholder="추가할 할 일을 입력하세요!" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}/>
+                <input id="todo-input" type="text" placeholder="추가할 할 일을 입력하세요!" ref={ input }/>
                 <button id="addBtn" onClick={ addTodo }>추가</button>
             </article>
 
