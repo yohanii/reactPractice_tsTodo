@@ -22,6 +22,7 @@ const TodoList = (): React.ReactElement => {
 
     const onToggle = useCallback(
         (id:number):void => {
+            console.log("todos: " + todos);
             setTodos(todos.map((todo) => (todo.id === id ? { ...todo, checked: !todo.checked} : todo)))
         },
         [todos]

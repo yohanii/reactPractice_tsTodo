@@ -22,7 +22,10 @@ const TodoListItem = ({ todo, onToggle }: TodoProps): React.ReactElement => {
 
 const areEqual = (prevProps: TodoProps, nextProps: TodoProps):boolean => {
     return (
-        prevProps.todo === nextProps.todo
+        prevProps.todo.id === nextProps.todo.id &&
+        prevProps.todo.content === nextProps.todo.content &&
+        prevProps.todo.checked === nextProps.todo.checked &&
+        prevProps.onToggle === nextProps.onToggle
     );
 };
 
