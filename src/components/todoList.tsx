@@ -20,12 +20,19 @@ const TodoList = (): React.ReactElement => {
         nextId.current++;
     }
 
+    // 기존 onToggle : 만들어진 시점의 todos를 사용해서, 토글 시 이후의 Item들이 사라지는 문제가 있었음.
+    // const onToggle = useCallback(
+    //     (id:number):void => {
+    //         console.log("todos: " + todos);
+    //         setTodos(todos.map((todo) => (todo.id === id ? { ...todo, checked: !todo.checked} : todo)))
+    //     },
+    //     [todos]
+    // );
+
     const onToggle = useCallback(
-        (id:number):void => {
-            console.log("todos: " + todos);
-            setTodos(todos.map((todo) => (todo.id === id ? { ...todo, checked: !todo.checked} : todo)))
-        },
-        [todos]
+        (id: number): void => {
+            setTodos((todos) => todos.map((todo) => todo.id === id ? { ...todo, checked: !todo.checked } : todo ) ); },
+        []
     );
 
     return (
